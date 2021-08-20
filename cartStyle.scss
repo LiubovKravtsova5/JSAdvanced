@@ -1,3 +1,15 @@
-.cart button{
+ button.cart {
     background-color: rgb(218, 50, 106);
+    border-radius: 5px;
+    &:disabled{
+        background-color: rgb(226, 226, 226);
+        box-shadow:none;
+    }
+    &:active{
+        font-weight: 700;
+        border: 2px solid black;        
+    }
+    &:disabled{
+        box-shadow:none;
+    }
 }
