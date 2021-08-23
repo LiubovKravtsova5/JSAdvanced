@@ -6,18 +6,29 @@ const products = [
     { title: 'Shoes', price: 250 },
 ];
 
-const renderProductItem = (title, price) => {
-    return `<div class="product-item">
-    <h3>${title}</h3>
-    <p>${price}</p>
-    <button class="mybutton" data-id="${title}"> Добавить</button>
-    </div>`;
+
+
+
+
+const cart = {
+    products,
+    total: null,
+    list: null,
+    idOfProduct: null,
+    productListArr: [],
+    productList: {},
+
+
+    renderProductsItem(product) {
+        return `<div class="products-item">
+        <h3>${product.title}</h3>
+        <p>${product.price}</p></div>`;
+    },
+
+    renderProductsList() {
+        document.querySelector('.products-list').innerHTML = products.map(item => this.renderProductsItem(item)).join('');
+    },
+
 };
 
-const renderProductsList = (list) => {
-    let productListArr = list.map(item => renderProductItem(item.title, item.price));
-    let productList = productListArr.join("");
-    document.querySelector('.product-list').innerHTML = productList;
-}
-
-renderProductsList(products);
+cart.renderProductsList(products);
