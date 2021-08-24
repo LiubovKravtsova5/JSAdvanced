@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ol {
+  margin-left: 20px;
+}
+
+body {
+  background-color: #1d1e1f;
+  color: white;
+  font-family: Courier;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 2rem;
+}
+
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.body-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100vh;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 50px;
+}
+
+.div-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 50px auto;
+  text-align: center;
+  -ms-flex-item-align: end;
+      align-self: end;
+}
+
+output {
+  color: black;
+  background-color: white;
+}
+
+button {
+  outline: none;
+  -webkit-box-shadow: 0 0 20px #e2e2e2;
+          box-shadow: 0 0 20px #e2e2e2;
+  border-radius: 3px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  color: black;
+  background-color: white;
+  padding: 20px;
+  font-family: Courier;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+button:active {
+  font-weight: 700;
+  border: 2px solid black;
+}
+
+button:disabled {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.solution {
+  margin-bottom: 20px;
+  color: #b7ecb7;
+}
+
+td.cell {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #eee;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+table {
+  border-spacing: 0;
+}
+/*# sourceMappingURL=style.css.map */
