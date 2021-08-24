@@ -1,9 +1,9 @@
 "use strict"
 const products = [
-    { title: 'Shirt', price: 150 },
-    { title: 'Socks', price: 50 },
-    { title: 'Jacket', price: 350 },
-    { title: 'Shoes', price: 250 },
+    { title: 'Shirt', price: 150, img: 'img/Shirt.png' },
+    { title: 'Socks', price: 50, img: 'img/Socks.jpg' },
+    { title: 'Jacket', price: 350, img: 'img/Jacket.png' },
+    { title: 'Shoes', price: 250, img: 'img/Shoes.jpg' },
 ];
 
 
@@ -19,12 +19,14 @@ const cart = {
 
     init() {
         this.renderProductsList();
-        this.eventHandlers();
+
 
     },
 
     renderProductsItem(product) {
-        return `<div class="products-item">
+        console.log(product.img);
+        return `<div class="products-item" id=${product.title}>
+        <img src="${product.img}">
         <h3>${product.title}</h3>
         <p>${product.price}</p>
         <button class="add-product" data-id="${product.title}"> Добавить</button>
@@ -32,34 +34,35 @@ const cart = {
     },
 
     renderProductsList() {
+
         document.querySelector('.products-list').innerHTML = products.map(item => this.renderProductsItem(item)).join('');
-        this.el = document.querySelector('.add-product');
+        this.products.forEach((product) => this.eventHandlers(product));
+
     },
-    eventHandlers() {
-        //document.querySelector('.add-product').addEventListener('click', event => this.addToBasket(event));
-        console.log('ifeventHandlers');
+    eventHandlers(product) {
+        console.log(product.title);
+        this.el = document.getElementById(product.title);
         this.el.addEventListener('click', event => this.addToBasket(event));
     },
 
     addToBasket(event) {//увеличение количества
-        console.log('передаем элемент', event.target.dataset);
-        order.addToBasket(this.products.find((products) => products.title === event.target.dataset.id))
+        console.log('передаем элемент', event.target.dataset.id);
+        console.log(cart.products);
+        //this.products.forEach((products) => console.log(products.title));
+        order.addToBasket(cart.products.find((products) => products.title === event.target.dataset.id));
     },
 
 };
 
-const totalPriceStr = {
-    textReturn(product) {
-        return `<div><i><p> ${product.qt} ${product.id}</p></i></div>`;
-    }
 
-};
 
 const order = {
     basket: [],
+    totalSum: null,
+    localSum: null,
 
     addToBasket(product) {
-        const inBascket = this.basket.find((element) => product.id === element.id);
+        const inBascket = this.basket.find((element) => product.title === element.title);
         if (!inBascket) {
             this.basket.push({ ...product, qt: 1 });
         } else {
@@ -76,16 +79,27 @@ const order = {
         this.basketRender();
         this.eventHandlers();
     },
+    textReturn(product) {
+        this.localSum = product.qt * product.price;
+        return `<div><i><p> ${product.qt} ${product.title} на сумму ${this.localSum}</p></i></div>`;
+    },
+    totalPriceStr() {
+        this.totalSum = null;
+        this.basket.forEach((element) =>
+            this.totalSum += element.qt * element.price);
+        return `<div><i><p> Итого: ${this.totalSum}</p></i></div>`;
 
+    },
     basketRender() {
         console.log('сейчас корзина такая:', this.basket);
         this.clrBasketRender();//очистка корзины
         this.el.insertAdjacentHTML('beforeend', `<div><i><h2> В корзине: </h2></i></div>`);
         this.basket.forEach((element) => {
-            this.el.insertAdjacentHTML('beforeend', `${totalPriceStr.textReturn(element)}`);
+            this.el.insertAdjacentHTML('beforeend', `${this.textReturn(element)}`);
         }
         );
-        this.el.insertAdjacentHTML('beforeend', '<button class="mybuttonCLr" data-id="${product.id}"> Удалить</button>');
+        this.el.insertAdjacentHTML('beforeend', `${this.totalPriceStr()}`);
+        this.el.insertAdjacentHTML('beforeend', '<button class="mybuttonCLr" data-title="${product.title}"> Удалить</button>');
 
     },
     clrBasketRender() {
@@ -96,6 +110,7 @@ const order = {
     },
     clrBasket() {
         this.basket = [];
+        this.totalSum = null;
         this.clrBasketRender();
     },
 

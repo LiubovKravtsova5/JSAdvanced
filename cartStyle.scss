@@ -1,3 +1,21 @@
+.products-list{
+    
+    overflow: auto;
+    justify-content: space-between;
+    margin: 30px auto;
+    display: flex;
+}
+.products-item{     
+    align-items: flex-end;
+    
+    margin:20px;
+    text-align: center;
+   
+}
+button.add-product{    
+    background-color: hotpink;
+}
+
 button.clr-cart {
     background-color: rgb(218, 50, 106);
     border-radius: 5px;
