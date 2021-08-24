@@ -22,9 +22,7 @@ const cart = {
 
 
     },
-
     renderProductsItem(product) {
-        console.log(product.img);
         return `<div class="products-item" id=${product.title}>
         <img src="${product.img}">
         <h3>${product.title}</h3>
@@ -32,7 +30,6 @@ const cart = {
         <button class="add-product" data-id="${product.title}"> Добавить</button>
         </div>`;
     },
-
     renderProductsList() {
 
         document.querySelector('.products-list').innerHTML = products.map(item => this.renderProductsItem(item)).join('');
@@ -40,18 +37,13 @@ const cart = {
 
     },
     eventHandlers(product) {
-        console.log(product.title);
         this.el = document.getElementById(product.title);
         this.el.addEventListener('click', event => this.addToBasket(event));
     },
-
     addToBasket(event) {//увеличение количества
         console.log('передаем элемент', event.target.dataset.id);
-        console.log(cart.products);
-        //this.products.forEach((products) => console.log(products.title));
         order.addToBasket(cart.products.find((products) => products.title === event.target.dataset.id));
     },
-
 };
 
 
@@ -68,14 +60,10 @@ const order = {
         } else {
             inBascket.qt += 1;
         }
-
         this.init();
-
     },
-
     init() {  //Позиционирование на HTML-странице
         this.el = document.querySelector('.mybasket');
-        console.log('инициализируем bascket ', this.basket);
         this.basketRender();
         this.eventHandlers();
     },
@@ -91,7 +79,6 @@ const order = {
 
     },
     basketRender() {
-        console.log('сейчас корзина такая:', this.basket);
         this.clrBasketRender();//очистка корзины
         this.el.insertAdjacentHTML('beforeend', `<div><i><h2> В корзине: </h2></i></div>`);
         this.basket.forEach((element) => {
@@ -113,8 +100,6 @@ const order = {
         this.totalSum = null;
         this.clrBasketRender();
     },
-
-
 }
 
 cart.init();
