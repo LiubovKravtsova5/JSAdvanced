@@ -1,8 +1,8 @@
 .products-list {
   overflow: auto;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
   margin: 30px auto;
   display: -webkit-box;
   display: -ms-flexbox;

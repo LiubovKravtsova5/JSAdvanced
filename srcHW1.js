@@ -17,11 +17,6 @@ const cart = {
     productList: {},
     el: null,
 
-    init() {
-        this.renderProductsList();
-
-
-    },
     renderProductsItem(product) {
         return `<div class="products-item" id=${product.title}>
         <img src="${product.img}">
@@ -32,7 +27,7 @@ const cart = {
     },
     renderProductsList() {
 
-        document.querySelector('.products-list').innerHTML = products.map(item => this.renderProductsItem(item)).join('');
+        document.querySelector('.solution2-2').innerHTML = products.map(item => this.renderProductsItem(item)).join('');
         this.products.forEach((product) => this.eventHandlers(product));
 
     },
@@ -102,4 +97,4 @@ const order = {
     },
 }
 
-cart.init();
+cart.renderProductsList();
