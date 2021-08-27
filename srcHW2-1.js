@@ -110,7 +110,6 @@ class Order {
         this.total = null;
         this.basket.forEach((item) => {
             this.total += item.subSum;
-            console.log(item, "+", item.price, "=", this.total);
         });
         this.totalSumPlace = document.createElement('p');
         this.totalSumPlace.innerHTML = `<div class="products-item">
