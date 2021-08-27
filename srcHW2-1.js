@@ -49,87 +49,61 @@ class ProductsItem {
     }
     eventHandlers() {
         this.id = document.getElementById(this.title);
-        this.id.addEventListener('click', event => this.addToBasket(event.target.dataset.id));
+        this.id.addEventListener('click', event => newBasket.addToBasket(event.target.dataset.id));
 
     }
-    addToBasket(id) {//увеличение количества
-        let orderList = new OrderItem(this.title, this.price);
-        orderList.addToBasket();
-    }
-}
-class OrderItem {
-    constructor(title, price) {
-        this.title = title;
-        this.price = price;
-        this.qt = 0;
-        this.text;
-        this.subSum;
-    }
-    addToBasket() {
-        const inBascket = Order.basket.find((element) => this.title === element.title);
-        if (!inBascket) {
-            Order.basket.push({ ...product, qt: 1 });
-        } else {
-            inBascket.qt += 1;
-        }
-        this.init();
-    },
-    init() {
-        let target = document.querySelector('.mybasket');
-        this.text = document.createElement('p');
-        this.renderProductsItem();
-        target.insertAdjacentElement('beforeend', this.text);
-    }
-
-    renderProductsItem() {
-        this.text.innerHTML = `<div class="products-item">
-        <p><i>${this.qt}${this.title} по цене: ${this.price} Подитог: ${this.subSum}</i></p>
-        </div>`;
-    }
-
 
 }
-
 
 
 class Order {
     constructor() {
         this.basket = [];
-        this.order = '';
+        this.text = '';
+        this.target;
     }
-    clrBasketRender() {
-        this.order = '';
+
+    clrRenderOrder() {
+        this.text = '';
     }
-    addToBasket(title, price) {
-        ;
-        if (!this.basket.title) {
-            this.basket.title = new OrderItem(title, price);
+    addToBasket(id) {//увеличение количеств
+        const inBascket = newBasket.basket.find((element) => id === element.title);
+        if (!inBascket) {
+            const pushProduct = pl.products.find((element) => id === element.title);
+            newBasket.basket.push({ ...pushProduct, qt: 1 });
         } else {
-            inBascket.qt += 1;
+            const plusQt = newBasket.basket.findIndex((element) => id === element.title);
+            newBasket.basket[plusQt]["qt"] += 1;
+
         }
+
+        this.init();
     }
-    textOrder() {
-        return `<div class="orderList">
-        <div><i><h2> В корзине: </h2></i></div>
-        <img src="${this.img}">
-        <h3>${this.title}</h3>
-        <p>${this.price}</p>
-        <button class="add-product" data-id="${this.title}"> Добавить</button>
+
+    init() {
+        this.target = document.querySelector('.mybasket');
+        this.target.innerHTML = '';
+        console.log(this.basket);
+        this.basket.forEach((item) => {
+            console.log(item);
+
+
+            this.text = document.createElement('p');
+            this.renderOrderItem(item);
+            this.target.insertAdjacentElement('beforeend', this.text);
+        });
+    }
+
+    renderOrderItem(item) {
+
+        this.text.innerHTML = `<div class="products-item">
+        <p><i>${item.qt}${item.title} по цене: ${item.price} Подитог: ${item.subSum}</i></p>
         </div>`;
     }
-    renderOrder() {
-        this.clrRenderOrder();//очистка корзины
-        this.order.insertAdjacentHTML('beforeend', `<div><i><h2> В корзине: </h2></i></div>`);
-        this.basket.forEach((element) => {
-            this.el.insertAdjacentHTML('beforeend', `${this.textReturn(element)}`);
-        }
-        );
-        this.el.insertAdjacentHTML('beforeend', `${this.totalPriceStr()}`);
-        this.el.insertAdjacentHTML('beforeend', '<button class="mybuttonCLr" data-title="${product.title}"> Удалить</button>');
 
-    }
 
 }
+let newBasket = new Order();
 let pl = new Products();
 pl.renderProductsList();
 
