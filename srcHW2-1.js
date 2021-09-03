@@ -2,21 +2,39 @@
 понадобятся для работы с этими сущностями. */
 
 "use strict"
-
+//const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 class Products {
     constructor() {
-        this.products = [
-            { title: 'Shirt', price: 150, img: 'img/Shirt.png' },
-            { title: 'Socks', price: 50, img: 'img/Socks.jpg' },
-            { title: 'Jacket', price: 350, img: 'img/Jacket.png' },
-            { title: 'Shoes', price: 250, img: 'img/Shoes.jpg' },
-        ];
+        /*  this.products = [
+             { title: 'Shirt', price: 150, img: 'img/Shirt.png' },
+             { title: 'Socks', price: 50, img: 'img/Socks.jpg' },
+             { title: 'Jacket', price: 350, img: 'img/Jacket.png' },
+             { title: 'Shoes', price: 250, img: 'img/Shoes.jpg' },
+         ]; */
+        this.products = [];
+        this._getProducts()
+            .then(data => {
+                this.products = [...data];
+                console.log(this.products);
+                this.renderProductsList();
+            });
 
+        /* this.products.forEach(element => {
+            element.push({ img: 'img/noimg.jpg' })
+        }); */
+    }
+    _getProducts() {
+
+        return fetch(`${'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses'}/catalogData.json`)
+            .then(result => result.json())
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     renderProductsList() {
         this.products.forEach(element => {
-            const product = new ProductsItem(element.title, element.price, element.img);
+            const product = new ProductsItem(element);
             product.init();
         })
     }
@@ -24,9 +42,9 @@ class Products {
 
 }
 class ProductsItem {
-    constructor(title, price, img) {
-        this.title = title;
-        this.price = price;
+    constructor(product, img = "img/noimg.jpg") {
+        this.title = product.product_name;
+        this.price = product.price;
         this.img = img;
         this.id;
         this.text;
@@ -75,12 +93,12 @@ class Order {
         this.target.innerHTML = '';
     }
     addToBasket(id) {//увеличение количеств
-        const inBascket = newBasket.basket.find((element) => id === element.title);
+        const inBascket = newBasket.basket.find((element) => id === element.product_name);
         if (!inBascket) {
-            const pushProduct = pl.products.find((element) => id === element.title);
+            const pushProduct = pl.products.find((element) => id === element.product_name);
             newBasket.basket.push({ ...pushProduct, qt: 1, subSum: pushProduct.price });
         } else {
-            const plusQt = newBasket.basket.findIndex((element) => id === element.title);
+            const plusQt = newBasket.basket.findIndex((element) => id === element.product_name);
             newBasket.basket[plusQt]["qt"] += 1;
             newBasket.basket[plusQt]["subSum"] = newBasket.basket[plusQt]["qt"] * newBasket.basket[plusQt]["price"];
         }
@@ -120,16 +138,16 @@ class Order {
     }
     renderOrderItem(item) {
         this.text.innerHTML = `<div class="products-item">
-        <p><i>${item.qt}${item.title} по цене: ${item.price} Подитог: ${item.subSum}</i></p>
+        <p><i>${item.qt}${item.product_name} по цене: ${item.price} Подитог: ${item.subSum}</i></p>
         </div>`;
     }
 
 
 
-
 }
-let newBasket = new Order();
+
 let pl = new Products();
+let newBasket = new Order();
 pl.renderProductsList();
 
 
