@@ -20,16 +20,15 @@ body{
 }
 header{
     display: flex;
-
     flex-direction: column;
     margin: 50px auto;
     text-align: center;
 }
 .header{
     display: flex;  
-    justify-content: space-between;
-    margin: 50px auto;
+    justify-content: space-between;   
     text-align: center;
+    margin: 50px 0;
 }
 .flex{
     display: flex;
@@ -41,7 +40,7 @@ header{
     height: 100vh;
     max-width: $custWidth;
     margin: 0 auto;
-    padding: 0 50px;
+    padding: 0 20px;
 }
 .div-container{
     display: flex;
@@ -50,6 +49,7 @@ header{
 }
 footer{
     display: flex;
+    justify-content: center;
     margin: 50px auto;
     text-align: center;
     align-self: end;
@@ -111,42 +111,12 @@ table{
     align-items: center;
     justify-content: left;       
 }
-.fas-button {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    outline: none;
-    padding: 11px 20px;
-    background-color: #ffffff;
-    text-align: center;
-    font-size: 14px;
-    letter-spacing: 0px;
-    line-height: 14px;
-    color: #f16d7f;
-    font-weight: 400;
-    font-family: "Lato";
-    border: 1px solid #f16d7f;
+.pos-abs{
+    position: absolute right;
 }
-.fa-search:before {
-    content: "\f002";
+.pos-rel{
+    position: relative;
 }
-.fas-button {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    outline: none;
-    padding: 11px 20px;
-    background-color: #ffffff;
-    text-align: center;
-    font-size: 14px;
-    letter-spacing: 0px;
-    line-height: 14px;
-    color: #f16d7f;
-    font-weight: 400;
-    font-family: "Lato";
-    border: 1px solid #f16d7f;
-}
-.fa, .fas {
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
+.text-right{
+    text-align: right;
 }
