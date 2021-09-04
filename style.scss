@@ -6,6 +6,7 @@ $custWidth:1140px;
 $runningTitleHeight:100px;
 
 
+
 ol{
     margin-left: 20px;
 }
@@ -19,9 +20,19 @@ body{
 }
 header{
     display: flex;
+
     flex-direction: column;
     margin: 50px auto;
     text-align: center;
+}
+.header{
+    display: flex;  
+    justify-content: space-between;
+    margin: 50px auto;
+    text-align: center;
+}
+.flex{
+    display: flex;
 }
 
 .body-container{
@@ -87,4 +98,55 @@ td.cell{
 }
 table{
     border-spacing: 0;
+}
+
+.flex-container{
+    overflow: auto;
+    justify-content: space-between;
+    display: flex;
+}
+.box{
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: left;       
+}
+.fas-button {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    outline: none;
+    padding: 11px 20px;
+    background-color: #ffffff;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 0px;
+    line-height: 14px;
+    color: #f16d7f;
+    font-weight: 400;
+    font-family: "Lato";
+    border: 1px solid #f16d7f;
+}
+.fa-search:before {
+    content: "\f002";
+}
+.fas-button {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    outline: none;
+    padding: 11px 20px;
+    background-color: #ffffff;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 0px;
+    line-height: 14px;
+    color: #f16d7f;
+    font-weight: 400;
+    font-family: "Lato";
+    border: 1px solid #f16d7f;
+}
+.fa, .fas {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
 }

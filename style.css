@@ -28,6 +28,23 @@ header {
   text-align: center;
 }
 
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .body-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -118,5 +135,71 @@ td.cell {
 
 table {
   border-spacing: 0;
+}
+
+.flex-container {
+  overflow: auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.box {
+  overflow: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+
+.fas-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  outline: none;
+  padding: 11px 20px;
+  background-color: #ffffff;
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 0px;
+  line-height: 14px;
+  color: #f16d7f;
+  font-weight: 400;
+  font-family: "Lato";
+  border: 1px solid #f16d7f;
+}
+
+.fa-search:before {
+  content: "\f002";
+}
+
+.fas-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  outline: none;
+  padding: 11px 20px;
+  background-color: #ffffff;
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 0px;
+  line-height: 14px;
+  color: #f16d7f;
+  font-weight: 400;
+  font-family: "Lato";
+  border: 1px solid #f16d7f;
+}
+
+.fa, .fas {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
 }
 /*# sourceMappingURL=style.css.map */
