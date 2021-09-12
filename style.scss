@@ -120,3 +120,18 @@ table{
 .text-right{
     text-align: right;
 }
+.order-item{
+display: flex;
+}
+.noimg-tobasket{
+    width: 50px;
+    height: 50px;
+}
+.order-item-text{
+  margin-bottom: 0; 
+  font-size: small; 
+  line-height: normal;
+}
+.reduce-product{
+    padding: 10px;   
+}
