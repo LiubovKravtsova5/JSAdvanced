@@ -17,60 +17,72 @@
 
 <body>
     <div class="body-container">
+        <div id="app">
+            <div class="header">
+                <div class="flex-container">
+                    <a class="index-link" href="#">
+                        <div class="logo-box">
+                            <!--  <div class="logo-transition"><img class="logo-t" src="" alt="brand-logo"></div> -->
+                            <h1>E-shop</h1>
+                        </div>
+                    </a>
+                </div>
 
-        <div class="header">
-            <div class="flex-container">
-                <a class="index-link" href="#">
-                    <div class="logo-box">
-                        <!--  <div class="logo-transition"><img class="logo-t" src="" alt="brand-logo"></div> -->
-                        <h1>E-shop</h1>
-                    </div>
-                </a>
-            </div>
+                <div class="flex-right">
+                    <form>
+                        <input type="text" class="search-field" v-model="findProd">
+                        <button type="submit" class="btn-search">
+                            <i class="fas fa-search"></i>
+                        </button>
 
-            <div class="flex-container">
-                <div class="basket pos-rel">
+                    </form>
+
+
                     <details>
-                        <summary class="text-right">
+                        <summary>
                             <i class=" fas fa-shopping-cart"> Корзина</i>
                         </summary>
-                        <div class="solution pos-abs ">
-                            <div class="mybasket"></div>
-                        </div>
+                        <div class="mybasket"></div>
                     </details>
                 </div>
+
+
             </div>
         </div>
 
-        <div class="div-container">
-            <div class="solution2-1 products-list flex-container"></div>
-            <!--          <button id="" class="hide-solution">Скрыть решение</button> -->
-            <script src="./srcHW5.js"></script>
-        </div>
+    </div>
 
-        <header>
-            <h3>JavaScript AdvancedCourse</h3>
-            <h2>Урок 5. Фреймворк Vue</h2>
-        </header>
-        <div class="div-container">
-            <p>
-            <ol>
-                <li>
-                    Добавить методы и обработчики событий для поля поиска. Создать в объекте данных поле searchLine и
-                    привязать к нему содержимое поля ввода. На кнопку «Искать» добавить обработчик клика, вызывающий
-                    метод FilterGoods.
-                </li>
-                <li>Добавить корзину. В html-шаблон добавить разметку корзины. Добавить в объект данных поле
-                    isVisibleCart, управляющее видимостью корзины.</li>
-                <li>
-                    *Добавлять в .goods-list заглушку с текстом «Нет данных» в случае, если список товаров пуст.
-                </li>
-            </ol>
-            </p>
 
-        </div>
 
-        <footer> Copyright © Liubov' Kravtsova </footer>
+    <div class="div-container">
+        <div class="solution2-1 products-list flex-container"></div>
+        <!--          <button id="" class="hide-solution">Скрыть решение</button> -->
+        <script src="./srcHW5.js"></script>
+    </div>
+
+    <header>
+        <h3>JavaScript AdvancedCourse</h3>
+        <h2>Урок 5. Фреймворк Vue</h2>
+    </header>
+    <div class="div-container">
+        <p>
+        <ol>
+            <li>
+                Добавить методы и обработчики событий для поля поиска. Создать в объекте данных поле searchLine и
+                привязать к нему содержимое поля ввода. На кнопку «Искать» добавить обработчик клика, вызывающий
+                метод FilterGoods.
+            </li>
+            <li>Добавить корзину. В html-шаблон добавить разметку корзины. Добавить в объект данных поле
+                isVisibleCart, управляющее видимостью корзины.</li>
+            <li>
+                *Добавлять в .goods-list заглушку с текстом «Нет данных» в случае, если список товаров пуст.
+            </li>
+        </ol>
+        </p>
+
+    </div>
+
+    <footer> Copyright © Liubov' Kravtsova </footer>
     </div>
 
 </body>

@@ -59,7 +59,7 @@ output{
     color: black;
     background-color: white;
 }
-button{
+.custom-button{
     outline: none;
     box-shadow:0 0 20px rgb(226, 226, 226);
     border-radius: 3px;
@@ -120,8 +120,12 @@ table{
 .text-right{
     text-align: right;
 }
+.fa-shopping-cart{
+    position: relative;
+}
 .order-item{
 display: flex;
+background-color: rgb(183, 236, 183);
 }
 .noimg-tobasket{
     width: 50px;
@@ -133,5 +137,27 @@ display: flex;
   line-height: normal;
 }
 .reduce-product{
-    padding: 10px;   
+    height: 100%;  
+    padding: 10px;
+}
+#btn-find{
+    padding: 0;
+    box-shadow:none;
+    width: fit-content;
+    align-self: center;      
+    height: 100%; 
+
+}
+.flex-right{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    height: 50px;
+}
+.mybasket{
+    width: max-content;
+    position: absolute;
+    right: 0;
+
+    height: max-content;
 }
